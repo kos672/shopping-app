@@ -29,6 +29,6 @@ public class OrderController {
     public ResponseEntity<List<OrderSummaryDTO>> getOrderInRange(@RequestParam(name = "from") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) LocalDateTime from,
                                                        @RequestParam(name = "to") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) LocalDateTime to) {
         List<OrderSummaryDTO> ordersInRange = orderService.getOrdersInRange(from, to);
-        return !ordersInRange.isEmpty() ? ResponseEntity.notFound().build() : ResponseEntity.ok(ordersInRange);
+        return ordersInRange.isEmpty() ? ResponseEntity.notFound().build() : ResponseEntity.ok(ordersInRange);
     }
 }
