@@ -1,6 +1,7 @@
 package com.kkuzmin.shopping.product;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -22,7 +23,7 @@ public class ProductController {
     @PostMapping
     public ResponseEntity<UUID> createProduct(@RequestBody @UniqueProductConstraint ProductDTO productDTO) {
         UUID productId = productService.createProduct(productDTO);
-        return ResponseEntity.ok(productId);
+        return new ResponseEntity<>(productId, HttpStatus.CREATED);
     }
 
     @GetMapping
