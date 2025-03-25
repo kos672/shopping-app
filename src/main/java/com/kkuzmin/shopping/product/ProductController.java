@@ -20,7 +20,7 @@ public class ProductController {
     }
 
     @PostMapping
-    public ResponseEntity<UUID> createProduct(@RequestBody ProductDTO productDTO) {
+    public ResponseEntity<UUID> createProduct(@RequestBody @UniqueProductConstraint ProductDTO productDTO) {
         UUID productId = productService.createProduct(productDTO);
         return ResponseEntity.ok(productId);
     }

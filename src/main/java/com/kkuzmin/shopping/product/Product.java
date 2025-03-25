@@ -17,7 +17,7 @@ public class Product {
     @Column(name = "VERSION")
     private Long version;
 
-    @Column(name = "NAME")
+    @Column(name = "NAME", unique = true)
     private String name;
 
     @Column(name = "PRICE")
