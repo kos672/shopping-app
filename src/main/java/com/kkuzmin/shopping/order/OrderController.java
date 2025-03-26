@@ -40,8 +40,8 @@ public class OrderController {
             @ApiResponse(responseCode = "404", description = "No orders could be found for the specified time range")
     })
     @GetMapping
-    public ResponseEntity<List<OrderSummaryDTO>> getOrderInRange(@RequestParam(name = "from") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) LocalDateTime from,
-                                                       @RequestParam(name = "to") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) LocalDateTime to) {
+    public ResponseEntity<List<OrderSummaryDTO>> getOrdersInRange(@RequestParam(name = "from") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) LocalDateTime from,
+                                                                  @RequestParam(name = "to") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) LocalDateTime to) {
         List<OrderSummaryDTO> ordersInRange = orderService.getOrdersInRange(from, to);
         return ordersInRange.isEmpty() ? ResponseEntity.notFound().build() : ResponseEntity.ok(ordersInRange);
     }
