@@ -27,6 +27,8 @@ dependencies {
 
 	implementation 'org.hibernate.validator:hibernate-validator'
 
+	implementation 'org.springdoc:springdoc-openapi-starter-webmvc-ui:2.8.5'
+
 	runtimeOnly "com.h2database:h2:$h2Version"
 
 	implementation 'org.mapstruct:mapstruct:1.6.3'
