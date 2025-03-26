@@ -4,6 +4,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.Optional;
@@ -21,6 +22,7 @@ public class ProductServiceImpl implements ProductService {
         this.productRepository = productRepository;
     }
 
+    @Transactional
     @Override
     public UUID createProduct(ProductDTO productDTO) {
         Product product = ProductMapper.INSTANCE.mapToProduct(productDTO);
@@ -32,6 +34,7 @@ public class ProductServiceImpl implements ProductService {
         return ProductMapper.INSTANCE.mapToProductFullDTOList(this.productRepository.findAll());
     }
 
+    @Transactional
     @Override
     public Optional<ProductFullDTO> updateProduct(ProductDTO product) {
         Product existingProduct = this.productRepository.findByName(product.name());
